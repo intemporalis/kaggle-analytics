@@ -6,7 +6,13 @@ import data from '../../../resources/Global YouTube Statistics.json'
 
 
 const columns: GridColDef[] = [
-    { field: "rank", headerName: "Rank", width: 90 },
+    { field: "rank", headerName: "Rank", width: 50 },
+    {
+      field: "subscribers",
+      type: "number",
+      headerName: "Subscribers",
+      width: 150,
+    },
     {
       field: "Youtuber",
       type: "string",
@@ -17,14 +23,9 @@ const columns: GridColDef[] = [
         field: "category",
         headerName: "Category",
         type: "string",
-        width: 200,
+        width: 150,
       },
-    {
-      field: "subscribers",
-      type: "number",
-      headerName: "Subscribers",
-      width: 150,
-    },
+    
     {
       field: "video views",
       type: "number",
@@ -52,6 +53,11 @@ const columns: GridColDef[] = [
       }
     },
   ];
+
+  columns.map(col => {
+    col.headerAlign ='center'
+    col.align ='center'
+  })
 
 const YoutubeAnalytics = () => {
   const [open, setOpen] = useState(false)
