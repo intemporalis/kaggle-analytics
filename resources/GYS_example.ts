@@ -1,4 +1,4 @@
-[
+const data = [
     {
         "rank": 1,
         "Youtuber": "T-Series",
@@ -150,3 +150,5 @@
         "Longitude": 78.96288
     }
 ]
+
+export default data;

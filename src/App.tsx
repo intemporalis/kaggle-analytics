@@ -4,11 +4,15 @@ import {
   RouterProvider,
   Outlet
 } from "react-router-dom";
+
+import "./styles/global.scss";
+
 import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/Menu";
-import "./styles/global.scss";
+import YoutubeChannels from './pages/youtubeChannels/YoutubeChannels';
+
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -38,6 +42,10 @@ function App() {
         {
           path: "/",
           element: <Home/>
+        },
+        {
+          path: "/dashboard/1",
+          element: <YoutubeChannels/>
         },
       ]
     }
