@@ -20,7 +20,11 @@ def csv_to_json(csv_path, json_path):
         print('provided file path does not end in .csv')
         return
 
+ # with open(csv_path, encoding='utf-8', errors='ignore') as file:
+ #       df = pd.read_csv(file, encoding='utf-8', on_bad_lines = 'skip')
     with open(csv_path, encoding='latin1') as file:
         df = pd.read_csv(file, encoding='latin1')
     
     df.to_json(json_path, orient='records')
+
+#def sanitize_json(json_path):
