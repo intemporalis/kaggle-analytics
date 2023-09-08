@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
     {
       field: "Youtuber",
       type: "string",
-      headerName: "Youtuber",
+      headerName: "Channel Name",
       width: 250,
     },
     {
