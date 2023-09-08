@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./youtubeChannels.scss"
 import { GridColDef } from "@mui/x-data-grid"
 import DataTable from "../../components/dataTable/DataTable.tsx";
-import data from '../../../resources/Global YouTube Statistics.ts'
+import data from '../../../resources/Global YouTube Statistics.json'
+
 
 const columns: GridColDef[] = [
     { field: "rank", headerName: "Rank", width: 90 },
