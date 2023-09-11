@@ -11,7 +11,8 @@ import Home from "./pages/home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/Menu";
-import YoutubeChannels from './pages/youtubeChannels/YoutubeChannels';
+import YoutubeStats from './pages/youtubeStats/YoutubeStats.tsx';
+import ChannelStats from './pages/channelStats/ChannelStats.tsx';
 
 
 function App() {
@@ -44,8 +45,12 @@ function App() {
           element: <Home/>
         },
         {
-          path: "/dashboard/1",
-          element: <YoutubeChannels/>
+          path: "/channels",
+          element: <YoutubeStats/>
+        },
+        {
+          path: "/channel/:id",
+          element: <ChannelStats/>
         },
       ]
     }

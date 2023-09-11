@@ -8,19 +8,19 @@ const menu = [
       {
           id: 1,
           title: "Youtube Channels",
-          url: "/dashboard/1",
+          url: "/channels",
           icon: <YouTube/>
       },
       {
           id: 2,
           title: "...?",
-          url: "/dashboard/2",
+          url: "/",
           icon: <AccessAlarm/>
       },
       {
           id: 3,
           title: "...?",
-          url: "/dashboard/3",
+          url: "/",
           icon: <AccessAlarm/>
       }
     ],

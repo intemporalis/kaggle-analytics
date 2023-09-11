@@ -1,11 +1,20 @@
 import { useState } from "react";
-import "./youtubeChannels.scss"
+import "./youtubeStats.scss"
 import { GridColDef } from "@mui/x-data-grid"
 import DataTable from "../../components/dataTable/DataTable.tsx";
 import data from '../../../resources/Global YouTube Statistics.json'
 
+// assign id field to conform to DataTable generic 'id' reference
+data.forEach( item => {
+  item.id = item.rank
+})
 
 const columns: GridColDef[] = [
+  {
+    field: "id",
+    headerName: "id",
+    type: "number",
+  },
     { field: "rank", headerName: "Rank", width: 50 },
     {
       field: "subscribers",
@@ -59,16 +68,26 @@ const columns: GridColDef[] = [
     col.align ='center'
   })
 
-const YoutubeAnalytics = () => {
+// hide id field
+const initialState = {
+  columns: {
+    columnVisibilityModel: {
+      // hidden id column
+      id: false
+    },
+  },
+}
+
+const YoutubeStats = () => {
   const [open, setOpen] = useState(false)
   return (
-    <div className="youtubeChannels">
+    <div className="youtubeStats">
         <div className="info">
-          <h1>Youtube Channels</h1>
+          <h1>Youtube Stats</h1>
         </div>
-        <DataTable slug="channels" columns={columns} rows={data}/>
+        <DataTable slug="channel" columns={columns} rows={data} initialState={initialState} />
     </div>
   )
 }
 
-export default YoutubeAnalytics
+export default YoutubeStats

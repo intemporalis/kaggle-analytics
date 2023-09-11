@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import "./dataTable.scss"
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
-
+import { Launch } from '@mui/icons-material';
 
 
 type Props = {
     columns: GridColDef[],
     rows: object[],
     slug: string;
+    initialState?: object;
 }
 
 const DataTable = (props:Props) => {
@@ -19,8 +20,10 @@ const DataTable = (props:Props) => {
         renderCell: (params) => {
             return (
                 <div className="action">
-                    <Link to={`/${props.slug}/${params.row.id}`}>
-                        <img src="view.svg" alt="" />
+                    <Link to= {`/${props.slug}/${params.row.id}`}
+                    state={props.rows[params.row.id]}
+                    >
+                      <Launch />
                     </Link>
                 </div>
             )
@@ -32,9 +35,9 @@ const DataTable = (props:Props) => {
         <DataGrid
         className="dataGrid"
         rows={props.rows}
-        columns={[...props.columns]}
-        getRowId={(row) => row.rank}
+        columns={[...props.columns, actionColumn]}
         initialState={{
+          ...props.initialState,
           pagination: {
             paginationModel: {
               pageSize: 10,
