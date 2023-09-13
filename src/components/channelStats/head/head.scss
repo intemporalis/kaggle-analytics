@@ -1,3 +1,42 @@
 .head {
+    display: flex;
+    flex-direction: column;
+    
+    
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        
+        .profilePhoto {
+            width: 20%;
+            height: 20%;
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .headInfo {
+            padding: 20px;
+            align-items: center;
+            
+
+            .name {
+                font-size: 3rem;
+                padding: 10px;
+            }
+    
+            .rank {
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                padding: 10px;
+                margin-left: 10px;
+            }
+        }
+        
+    }
+
     
 }

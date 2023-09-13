@@ -2,7 +2,9 @@ import { useState } from "react";
 import "./youtubeStats.scss"
 import { GridColDef } from "@mui/x-data-grid"
 import DataTable from "../../components/dataTable/DataTable.tsx";
-import data from '../../../resources/Global YouTube Statistics.json'
+import data from '../../../resources/youtube/clean_data.json'
+
+const img_path_base = '../../../resources/youtube/pics/';
 
 // assign id field to conform to DataTable generic 'id' reference
 data.forEach( item => {
@@ -17,16 +19,26 @@ const columns: GridColDef[] = [
   },
     { field: "rank", headerName: "Rank", width: 50 },
     {
-      field: "subscribers",
-      type: "number",
-      headerName: "Subscribers",
-      width: 150,
+      field: "img_src", headerName: "", width: 50,
+      renderCell: (params) => {
+        return (
+          <img src={img_path_base +
+            (params.row.img_path ? params.row.img_path : 'default.jpg')}>
+          </img>
+        );
+      }
     },
     {
       field: "Youtuber",
       type: "string",
       headerName: "Channel Name",
       width: 250,
+    },
+    {
+      field: "subscribers",
+      type: "number",
+      headerName: "Subscribers",
+      width: 150,
     },
     {
         field: "category",

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./dataTable.scss"
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
-import { Launch } from '@mui/icons-material';
+import { Launch, QueryStats } from '@mui/icons-material';
 
 
 type Props = {
@@ -21,8 +21,11 @@ const DataTable = (props:Props) => {
             return (
                 <div className="action">
                     <Link to= {`/${props.slug}/${params.row.id}`}
-                    state={props.rows[params.row.id]}
+                    state={props.rows[params.row.id-1]}
                     >
+                      <QueryStats />
+                    </Link>
+                    <Link to= {`${params.row.channel_url}`} target="_blank">
                       <Launch />
                     </Link>
                 </div>
