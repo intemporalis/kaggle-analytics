@@ -2,23 +2,12 @@ import { AccountBox } from "@mui/icons-material";
 import "./head.scss"
 import { Launch } from '@mui/icons-material';
 import { Link } from "react-router-dom";
+import YoutubeChannel from "../../../interfaces/YoutubeChannel.ts";
 
 const img_path_base = "/youtube/pics/";
 
-type Props = {
-    rank: number;
-    Youtuber: string;
-    subscribers: number;
-    "video views": number;
-    category?: string;
-    uploads: number;
-    channel_url: string;
-    img_path: string;
-    
-}
 
-
-const Head = (props:Props) => {
+const Head = (props:YoutubeChannel) => {
   return (
     <div className="head">
         <div className="profile">

@@ -28,6 +28,9 @@ interface YoutubeChannel {
     Urban_population: number;
     Latitude: number;
     Longitude: number;
+    channel_url: string;
+    img_src: string;
+    img_path: string;
 }
 
 export default YoutubeChannel;
