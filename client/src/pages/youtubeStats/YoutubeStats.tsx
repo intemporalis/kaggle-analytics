@@ -1,15 +1,12 @@
-import { useState } from "react";
-import "./youtubeStats.scss"
-import { GridColDef } from "@mui/x-data-grid"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./youtubeStats.scss";
+import { GridColDef } from "@mui/x-data-grid";
 import DataTable from "../../components/dataTable/DataTable.tsx";
-import data from '../../../../resources/youtube/clean_data.json';
+import YoutubeChannel from "../../interfaces/YoutubeChannel.ts";
 
-const img_path_base = "/youtube/pics/";
-
-// assign id field to conform to DataTable generic 'id' reference
-data.forEach( item => {
-  item.id = item.rank
-})
+const channels_url = import.meta.env.VITE_CHANNELS_URL;
+const img_url = channels_url + 'image/';
 
 const columns: GridColDef[] = [
   {
@@ -22,7 +19,7 @@ const columns: GridColDef[] = [
       field: "img_src", headerName: "", width: 50,
       renderCell: (params) => {
         return (
-          <img src={img_path_base +
+          <img src={img_url +
             (params.row.img_path ? params.row.img_path : 'default.jpg')}>
           </img>
         );
@@ -91,13 +88,28 @@ const initialState = {
 }
 
 const YoutubeStats = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [channels, setChannels] = useState(null);
+
+  useEffect(() => {
+    axios.get(channels_url).then((response) => {
+      // assign id field to conform to DataTable generic 'id' reference
+      response.data.forEach( (item: YoutubeChannel) => {
+        item.id = item.rank
+      });
+
+      setChannels(response.data);
+    });
+  }, []);
+
+  if (!channels) return null;
+
   return (
     <div className="youtubeStats">
         <div className="info">
           <h1>Youtube Stats</h1>
         </div>
-        <DataTable slug="channel" columns={columns} rows={data} initialState={initialState} />
+        <DataTable slug="channel" columns={columns} rows={channels} initialState={initialState} />
     </div>
   )
 }
