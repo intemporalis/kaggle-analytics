@@ -4,14 +4,14 @@ import { Launch } from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import YoutubeChannel from "../../../interfaces/YoutubeChannel.ts";
 
-const img_path_base = "/youtube/pics/";
+const img_url = import.meta.env.VITE_CHANNELS_URL + 'image/';
 
 
 const Head = (props:YoutubeChannel) => {
   return (
     <div className="head">
         <div className="profile">
-          <img className="profilePhoto" src={img_path_base +
+          <img className="profilePhoto" src={img_url +
             (props.img_path ? props.img_path : 'default.jpg')}>
           </img>
           <div className="headInfo">
